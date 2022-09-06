@@ -1,0 +1,8 @@
+version: "3.3"
+
+services:
+    frictionless_edge:
+        build: .
+        command: "python3 app.py"
+        devices:
+            - "/dev/video2:/dev/video0"
