@@ -54,10 +54,11 @@ if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Download and load object detection model
-    safe_download("https://github.com/meontechno/frictionless_weights/raw/main/v10.0/best.pt")
+    # safe_download("https://github.com/meontechno/frictionless_weights/raw/main/v10.0/best.pt")
     model = attempt_load(weights, map_location=device)  # load FP32 model
     stride = int(model.stride.max())
     names = model.module.names if hasattr(model, 'module') else model.names
+    logger.info(names)
 
     vid_stream = VideoStream(src="/dev/video0").start()
 
